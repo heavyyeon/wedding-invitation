@@ -1,0 +1,32 @@
+rules_version = '2';
+
+// Firebase 콘솔 > Firestore Database > 규칙 탭에 아래 내용을 붙여넣으세요.
+// guestbook 컬렉션에 대해 "형식이 올바른 글쓰기만" 허용하고,
+// 비밀번호는 해시(SHA-256, 64자 hex)로만 저장되도록 강제합니다.
+//
+// 주의: Firestore 보안 규칙만으로는 "본인 글만 삭제"를 완벽히 강제할 수 없습니다.
+// (누구나 문서 삭제 요청 자체는 보낼 수 있고, 비밀번호 검증은 클라이언트에서 수행됩니다.)
+// 더 강한 보안이 필요하면 Cloud Functions로 삭제 요청을 검증하는 것을 권장합니다.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /guestbook/{entryId} {
+      allow read: if true;
+
+      allow create: if request.resource.data.keys().hasOnly(
+                        ['name', 'message', 'passwordHash', 'createdAt']
+                      )
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() > 0
+                    && request.resource.data.name.size() <= 20
+                    && request.resource.data.message is string
+                    && request.resource.data.message.size() > 0
+                    && request.resource.data.message.size() <= 300
+                    && request.resource.data.passwordHash is string
+                    && request.resource.data.passwordHash.size() == 64;
+
+      allow update: if false;
+      allow delete: if true;
+    }
+  }
+}

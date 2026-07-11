@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-base: #f2f8ed;
+  --color-accent: #a8d96c;
+  --color-cream: #fffdf9;
+  /* --font-pretendard 은 layout.tsx의 next/font/local이 <html>에 주입합니다 */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--color-base);
+  color: #2c2c2c;
+}
+
+body {
+  font-family: var(--font-pretendard), sans-serif;
+  position: relative;
+}
+
+#app-root {
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--color-base);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ---------- Grain overlay ---------- */
+.grain-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+}
+
+/* ---------- Scroll fade-in ---------- */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Scrollbar (모바일 위주라 크게 영향 없음) ---------- */
+::-webkit-scrollbar {
+  width: 0px;
+}
