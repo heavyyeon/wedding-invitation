@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import FadeIn from "./FadeIn";
 import { wedding } from "@/config/wedding";
 
 export default function GallerySection() {
@@ -36,13 +35,8 @@ export default function GallerySection() {
   }, [activeIndex, close, prev, next]);
 
   return (
-    <section className="bg-base px-6 py-16">
-      <FadeIn>
-        <p className="text-center font-mono text-xs tracking-[0.3em] text-[#7a8c68]">GALLERY</p>
-        <h2 className="mt-2 text-center font-serif text-2xl text-[#2c2c2c]">우리의 순간들</h2>
-      </FadeIn>
-
-      <div className="mt-8 grid grid-cols-3 gap-0">
+    <section className="bg-base py-16">
+      <div className="grid grid-cols-3 gap-0">
         {photos.map((n) => (
           <button
             key={n}
