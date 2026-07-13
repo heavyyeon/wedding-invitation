@@ -101,7 +101,7 @@ export const wedding = {
   ],
 
   gallery: {
-    count: 22,
+    count: 12,
   },
 
   kakao: {
