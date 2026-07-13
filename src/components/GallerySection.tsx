@@ -35,7 +35,7 @@ export default function GallerySection() {
   }, [activeIndex, close, prev, next]);
 
   return (
-    <section className="bg-base py-16">
+    <section className="bg-base">
       <div className="grid grid-cols-3 gap-0">
         {photos.map((n) => (
           <button
