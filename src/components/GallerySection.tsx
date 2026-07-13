@@ -42,13 +42,13 @@ export default function GallerySection() {
         <h2 className="mt-2 text-center font-serif text-2xl text-[#2c2c2c]">우리의 순간들</h2>
       </FadeIn>
 
-      <div className="mt-8 grid grid-cols-3 gap-1.5">
+      <div className="mt-8 grid grid-cols-3 gap-0">
         {photos.map((n) => (
           <button
             key={n}
             type="button"
             onClick={() => setActiveIndex(n)}
-            className="relative aspect-square overflow-hidden bg-white/50"
+            className="relative aspect-[3/4] overflow-hidden bg-white/50"
           >
             <Image
               src={`/gallery/${n}.jpg`}
