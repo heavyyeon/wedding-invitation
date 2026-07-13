@@ -1,4 +1,3 @@
-import IntroAnimation from "@/components/IntroAnimation";
 import TitleCard from "@/components/TitleCard";
 import CastingSection from "@/components/CastingSection";
 import InvitationSection from "@/components/InvitationSection";
@@ -12,7 +11,6 @@ import ToastProvider from "@/components/ToastProvider";
 export default function Home() {
   return (
     <ToastProvider>
-      <IntroAnimation />
       <main>
         <TitleCard />
         <CastingSection />
